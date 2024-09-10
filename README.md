@@ -15,7 +15,7 @@
 
 TERMINATOR has been developed to help specifcally the students of **Sharif University of Technology** with their course selection process.
 
-Ofcourse the source code in **Python** can be modified for other coleeges and universities as well.
+Ofcourse, the source code in **Python** can be modified for other colleges and universities as well.
 
 > Keep in mind that since this software runs locally on your computer, there is no way for the hosting service to detect the software because no requests are sent directly from the software unlike most tools with the same functionality.
 
