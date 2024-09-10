@@ -227,7 +227,7 @@ auto_exe_button = tk.Button(root, text = 'AUTO TERMINATE', activebackground='pin
 auto_exe_button.pack(pady=10)
 
 def show_credits():
-    messagebox.showinfo("Credits", "Amirreza Mirjalily\nElectrical Engineering Student at Sharif University of Tcehnology\n\nSeptember 2024")
+    messagebox.showinfo("Credits", "Amirreza Mirjalily\nElectrical Engineering Student at Sharif University of Tcehnology\nGitHub: github.com/AmirMJ-Z\n\nSeptember 2024")
 
 credits = tk.Button(root, text = 'CREDITS', activebackground='lightgreen', highlightbackground='green', bg = 'lightgreen', fg = 'green', command=show_credits)
 credits.pack(pady=10)
