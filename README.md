@@ -41,6 +41,6 @@ Auto-Detection tool is also implemented into the software. This tool can be used
 <h2> <img src = './Images/CameraLogo.png' width = 32 align = 'center'> Software Snapshots</h2>
 
 <p align = 'center'>
-<img src = './Images/AppScreenshot.png' width = 250 align = 'center'>
-<img src = './Images/screenshot.jpg' width = 400 align = 'center'>
+<img src = './Images/AppScreenshot.png' width = 180 align = 'center'>
+<img src = './Images/screenshot.jpg' width = 500 align = 'center'>
 </p>
