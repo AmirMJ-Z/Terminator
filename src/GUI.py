@@ -6,10 +6,13 @@ import cv2
 import numpy as np
 
 color = np.array([52, 159, 19], dtype = 'uint8')
+tolerance = 3
 
 auto_detect_position_boolean = False
 
 position = (802, 753)
+pos_1 = None
+pos_2 = None
 tab_count = 0
 
 root = tk.Tk()
@@ -21,9 +24,10 @@ time_offset = 0
 prev_mill = 0
 
 def auto_detect_position():
-    global position
+    global position, pos_1, pos_2
     global color
     global auto_detect_position_boolean
+    global tolerance
     auto_detect_position_boolean = True
     positions_x = []
     positions_y = []
@@ -35,7 +39,7 @@ def auto_detect_position():
     
     for i in range(im.shape[0]):
         for j in range(im.shape[1]):
-            if int(im[i, j][0]) == int(color[0]) and int(im[i, j][1]) == int(color[1]) and int(im[i, j][2]) == int(color[2]):
+            if abs(int(im[i, j][0]) - int(color[0])) < tolerance and abs(int(im[i, j][1]) - int(color[1])) < tolerance and abs(int(im[i, j][2]) - int(color[2])) < tolerance:
                 positions_x.append(i)
                 positions_y.append(j)
 
@@ -45,17 +49,6 @@ def auto_detect_position():
     
     pos_1 = (positions_x[0], positions_y[0])
     pos_2 = (positions_x[-1], positions_y[-1])
-
-    print('sdhfgksdgf')
-    for i in range(pos_1[1], pos_2[1]):
-        im[pos_1[0], i] = np.array([0, 0, 255], dtype = 'uint8')
-        im[pos_2[0], i] = np.array([0, 0, 255], dtype = 'uint8')
-
-    for i in range(pos_1[0], pos_2[0]):
-        im[i, pos_1[1]] = np.array([0, 0, 255], dtype = 'uint8')
-        im[i, pos_2[1]] = np.array([0, 0, 255], dtype = 'uint8')
-
-    cv2.imwrite('screenshot.jpg', im)
 
     position = (int((pos_1[0] + pos_2[0])/2), int((pos_1[1] + pos_2[1])/2))
     
@@ -178,6 +171,14 @@ def auto_calibrate_position():
 
     for i in range(im.shape[1]):
         im[position[0], i] = np.array([0, 255, 0], dtype = 'uint8')
+
+    for i in range(pos_1[1], pos_2[1]):
+        im[pos_1[0], i] = np.array([0, 0, 255], dtype = 'uint8')
+        im[pos_2[0], i] = np.array([0, 0, 255], dtype = 'uint8')
+
+    for i in range(pos_1[0], pos_2[0]):
+        im[i, pos_1[1]] = np.array([0, 0, 255], dtype = 'uint8')
+        im[i, pos_2[1]] = np.array([0, 0, 255], dtype = 'uint8')
 
     cv2.imwrite('screenshot.jpg', im)
 
